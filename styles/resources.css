@@ -1,0 +1,647 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+
+/*========================================================
+
+RESOURCE LIBRARY
+MASTER STYLESHEET
+
+Author: Bradley Hobbs
+
+========================================================*/
+
+
+:root {
+
+    --navy: #101b2b;
+    --navy-light: #18283d;
+
+    --gold: #c8a45d;
+
+    --ivory: #f7f0e6;
+
+    --white: #ffffff;
+
+    --charcoal: #222222;
+
+    --gray: #6b6b6b;
+
+    --shadow:
+    0 15px 40px rgba(0,0,0,.15);
+
+}
+
+
+
+
+/*========================================================
+RESET
+========================================================*/
+
+
+* {
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+
+
+html {
+
+    scroll-behavior:smooth;
+
+}
+
+
+
+body {
+
+    background:var(--ivory);
+
+    color:var(--charcoal);
+
+    font-family:
+    "Inter",
+    sans-serif;
+
+    line-height:1.7;
+
+}
+
+
+
+
+
+h1,
+h2,
+h3 {
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+    color:var(--navy);
+
+}
+
+
+
+
+a {
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+
+
+
+/*========================================================
+HEADER
+========================================================*/
+
+
+.header {
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    background:
+    rgba(16,27,43,.95);
+
+    backdrop-filter:blur(10px);
+
+}
+
+
+
+
+.navbar {
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:1.2rem 2rem;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+
+
+
+.logo {
+
+    color:var(--gold);
+
+    font-family:
+    "Cormorant Garamond";
+
+    font-size:2rem;
+
+    font-weight:700;
+
+}
+
+
+
+
+
+.nav-links {
+
+    display:flex;
+
+    gap:2rem;
+
+    list-style:none;
+
+}
+
+
+
+
+.nav-links a {
+
+    color:var(--white);
+
+    transition:.3s;
+
+}
+
+
+
+
+.nav-links a:hover {
+
+    color:var(--gold);
+
+}
+
+
+
+
+.menu-toggle {
+
+    display:none;
+
+    background:none;
+
+    border:none;
+
+    color:white;
+
+    font-size:2rem;
+
+}
+
+
+
+
+
+/*========================================================
+HERO
+========================================================*/
+
+
+.hero {
+
+    min-height:75vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:5rem 2rem;
+
+    background:
+
+    linear-gradient(
+    rgba(16,27,43,.85),
+    rgba(16,27,43,.9)
+    );
+
+}
+
+
+
+
+.hero-content {
+
+    max-width:850px;
+
+    color:white;
+
+}
+
+
+
+
+.eyebrow {
+
+    color:var(--gold);
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    margin-bottom:1rem;
+
+}
+
+
+
+
+.hero h1 {
+
+    color:white;
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    line-height:1;
+
+}
+
+
+
+
+.hero p {
+
+    margin:2rem auto;
+
+    max-width:700px;
+
+    font-size:1.2rem;
+
+}
+
+
+
+
+.button {
+
+    display:inline-block;
+
+    padding:.9rem 2rem;
+
+    background:var(--gold);
+
+    color:var(--navy);
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+
+
+
+.button:hover {
+
+    transform:translateY(-4px);
+
+}
+
+
+
+
+
+/*========================================================
+SECTIONS
+========================================================*/
+
+
+section {
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:5rem 2rem;
+
+}
+
+
+
+
+section h2 {
+
+    text-align:center;
+
+    font-size:3rem;
+
+    margin-bottom:3rem;
+
+}
+
+
+
+
+.intro {
+
+    text-align:center;
+
+    max-width:900px;
+
+}
+
+
+
+
+.intro p {
+
+    font-size:1.1rem;
+
+}
+
+
+
+
+
+/*========================================================
+COLLECTION CARDS
+========================================================*/
+
+
+.collection-grid {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
+    gap:2rem;
+
+}
+
+
+
+
+
+.collection-card {
+
+    background:white;
+
+    padding:2.5rem;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+    transition:.35s;
+
+}
+
+
+
+
+
+.collection-card:hover {
+
+    transform:translateY(-10px);
+
+}
+
+
+
+
+.icon {
+
+    font-size:3rem;
+
+    margin-bottom:1rem;
+
+}
+
+
+
+
+.collection-card h3 {
+
+    font-size:2rem;
+
+    margin-bottom:1rem;
+
+}
+
+
+
+
+.collection-card span {
+
+    color:var(--gold);
+
+}
+
+
+
+
+
+.collection-card ul {
+
+    margin:1.5rem 0;
+
+    padding-left:1.2rem;
+
+}
+
+
+
+
+
+.collection-card a,
+.featured-box a {
+
+    display:inline-block;
+
+    margin-top:1rem;
+
+    color:var(--navy);
+
+    font-weight:700;
+
+    border-bottom:2px solid var(--gold);
+
+}
+
+
+
+
+
+/*========================================================
+FEATURED
+========================================================*/
+
+
+.featured {
+
+    background:white;
+
+}
+
+
+
+
+.featured-box {
+
+    max-width:800px;
+
+    margin:2rem auto;
+
+    padding:2.5rem;
+
+    border-left:5px solid var(--gold);
+
+    background:var(--ivory);
+
+}
+
+
+
+
+
+.featured-box h3 {
+
+    font-size:2.5rem;
+
+}
+
+
+
+
+
+/*========================================================
+FOOTER
+========================================================*/
+
+
+.footer {
+
+    background:var(--navy);
+
+    color:white;
+
+    text-align:center;
+
+    padding:3rem 2rem;
+
+}
+
+
+
+
+.footer p:first-child {
+
+    color:var(--gold);
+
+    font-size:1.2rem;
+
+}
+
+
+
+
+
+
+
+/*========================================================
+MOBILE
+========================================================*/
+
+
+@media(max-width:850px){
+
+
+.nav-links {
+
+    display:none;
+
+    position:absolute;
+
+    top:80px;
+
+    left:0;
+
+    width:100%;
+
+    background:var(--navy);
+
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:2rem;
+
+}
+
+
+
+.nav-links.active {
+
+    display:flex;
+
+}
+
+
+
+.menu-toggle {
+
+    display:block;
+
+}
+
+
+
+
+.hero {
+
+    min-height:65vh;
+
+}
+
+
+
+section {
+
+    padding:3rem 1.5rem;
+
+}
+
+
+
+section h2 {
+
+    font-size:2.3rem;
+
+}
+
+
+
+.collection-card {
+
+    padding:2rem;
+
+}
+
+
+}
