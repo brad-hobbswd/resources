@@ -503,6 +503,46 @@ COLLECTION HEADINGS
 
 }
 
+/*========================================================
+SERIES HEADINGS
+========================================================*/
+
+
+.series-heading {
+
+    grid-column:1 / -1;
+
+    font-size:2.5rem;
+
+    margin:
+
+    4rem 0 1rem;
+
+    padding-bottom:.75rem;
+
+    border-bottom:
+
+    3px solid var(--gold);
+
+}
+
+
+
+.series-description {
+
+    grid-column:1 / -1;
+
+    max-width:850px;
+
+    margin:
+
+    0 0 2rem;
+
+    color:var(--gray);
+
+    font-size:1.1rem;
+
+}
 
 
 
@@ -1029,6 +1069,11 @@ section h2 {
 
 }
 
+.series-heading {
+
+    font-size:2rem;
+
+}
 
 
 .resource-grid {
