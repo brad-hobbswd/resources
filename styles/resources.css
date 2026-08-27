@@ -14,6 +14,7 @@ Author: Bradley Hobbs
 :root {
 
     --navy:#101b2b;
+
     --navy-light:#18283d;
 
     --gold:#c8a45d;
@@ -25,6 +26,9 @@ Author: Bradley Hobbs
     --charcoal:#222222;
 
     --gray:#6b6b6b;
+
+    --border:
+    rgba(200,164,93,.35);
 
     --shadow:
     0 15px 40px rgba(0,0,0,.15);
@@ -43,7 +47,9 @@ RESET
 * {
 
     margin:0;
+
     padding:0;
+
     box-sizing:border-box;
 
 }
@@ -89,6 +95,14 @@ h4 {
 
 
 
+p {
+
+    margin-bottom:1rem;
+
+}
+
+
+
 a {
 
     text-decoration:none;
@@ -102,7 +116,7 @@ a {
 
 
 /*========================================================
-HEADER
+HEADER / NAVIGATION
 ========================================================*/
 
 
@@ -115,7 +129,8 @@ HEADER
     z-index:1000;
 
     background:
-    rgba(16,27,43,.95);
+
+    rgba(16,27,43,.96);
 
     backdrop-filter:blur(10px);
 
@@ -133,9 +148,9 @@ HEADER
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
+
+    justify-content:space-between;
 
 }
 
@@ -145,10 +160,11 @@ HEADER
 
     color:var(--gold);
 
-    font-size:2rem;
-
     font-family:
-    "Cormorant Garamond";
+    "Cormorant Garamond",
+    serif;
+
+    font-size:2rem;
 
     font-weight:700;
 
@@ -156,9 +172,13 @@ HEADER
 
 
 
+
+
 .nav-links {
 
     display:flex;
+
+    align-items:center;
 
     gap:2rem;
 
@@ -170,15 +190,19 @@ HEADER
 
 .nav-links a {
 
-    color:white;
+    color:var(--white);
 
     transition:.3s;
+
+    font-weight:500;
 
 }
 
 
 
-.nav-links a:hover {
+.nav-links a:hover,
+
+.nav-links a.active {
 
     color:var(--gold);
 
@@ -186,19 +210,25 @@ HEADER
 
 
 
+
+
 .menu-toggle {
 
     display:none;
 
-    background:none;
-
     border:none;
+
+    background:none;
 
     color:white;
 
     font-size:2rem;
 
+    cursor:pointer;
+
 }
+
+
 
 
 
@@ -215,19 +245,23 @@ HERO
 
     display:flex;
 
-    justify-content:center;
-
     align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
     padding:5rem 2rem;
 
+
     background:
 
     linear-gradient(
-    rgba(16,27,43,.9),
+
+    rgba(16,27,43,.88),
+
     rgba(16,27,43,.95)
+
     );
 
 }
@@ -252,6 +286,10 @@ HERO
 
     letter-spacing:3px;
 
+    font-size:.9rem;
+
+    margin-bottom:1rem;
+
 }
 
 
@@ -260,11 +298,13 @@ HERO
 
     color:white;
 
-    font-size:clamp(3rem,6vw,5rem);
+    font-size:
+
+    clamp(3rem,6vw,5rem);
 
     line-height:1;
 
-    margin:1rem 0;
+    margin-bottom:1.5rem;
 
 }
 
@@ -274,11 +314,17 @@ HERO
 
     color:white;
 
-    font-size:1.2rem;
+    font-size:1.15rem;
 
-    margin:2rem auto;
+    max-width:750px;
+
+    margin:
+
+    0 auto 2rem;
 
 }
+
+
 
 
 
@@ -286,19 +332,19 @@ HERO
 
     display:inline-block;
 
+    padding:1rem 2.5rem;
+
     background:var(--gold);
 
     color:var(--navy);
-
-    padding:1rem 2rem;
 
     border-radius:50px;
 
     font-weight:700;
 
+    transition:.3s;
+
 }
-
-
 
 
 
@@ -312,8 +358,11 @@ HERO
 
 
 
+
+
+
 /*========================================================
-SECTIONS
+GENERAL SECTIONS
 ========================================================*/
 
 
@@ -341,8 +390,6 @@ section h2 {
 
 
 
-
-
 .intro {
 
     text-align:center;
@@ -353,6 +400,11 @@ section h2 {
 
 
 
+.intro p {
+
+    font-size:1.1rem;
+
+}
 
 
 /*========================================================
@@ -360,28 +412,104 @@ RESOURCE DIRECTORY
 ========================================================*/
 
 
-.resource-category {
+.directory {
 
-    margin-bottom:5rem;
+    width:100%;
 
 }
+
+
+
+.resource-category {
+
+    margin-bottom:6rem;
+
+}
+
+
+
+.resource-category > p {
+
+    max-width:850px;
+
+    margin:
+
+    0 auto 3rem;
+
+    text-align:center;
+
+    color:var(--gray);
+
+    font-size:1.1rem;
+
+}
+
+
 
 
 
 .resource-category h3 {
 
-    font-size:2.5rem;
+    font-size:3rem;
 
-    border-bottom:3px solid var(--gold);
+    text-align:center;
 
-    padding-bottom:1rem;
+    margin-bottom:1.5rem;
 
-    margin-bottom:2rem;
+    position:relative;
 
 }
 
 
 
+.resource-category h3::after {
+
+    content:"";
+
+    display:block;
+
+    width:90px;
+
+    height:3px;
+
+    background:var(--gold);
+
+    margin:1rem auto 0;
+
+}
+
+
+
+
+
+/*========================================================
+COLLECTION HEADINGS
+========================================================*/
+
+
+.collection-title {
+
+    font-size:2.3rem;
+
+    margin:
+
+    4rem 0 2rem;
+
+    padding-bottom:.75rem;
+
+    border-bottom:
+
+    2px solid var(--border);
+
+}
+
+
+
+
+
+/*========================================================
+RESOURCE GRID
+========================================================*/
 
 
 .resource-grid {
@@ -389,7 +517,8 @@ RESOURCE DIRECTORY
     display:grid;
 
     grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
+
+    repeat(auto-fit,minmax(300px,1fr));
 
     gap:2rem;
 
@@ -399,31 +528,52 @@ RESOURCE DIRECTORY
 
 
 
+/*========================================================
+RESOURCE CARDS
+========================================================*/
+
+
 .resource-card {
 
-    background:white;
+    background:var(--white);
 
-    padding:2rem;
+    padding:2.2rem;
 
-    border-radius:18px;
+    border-radius:20px;
 
     box-shadow:var(--shadow);
-
-    transition:.35s;
 
     display:flex;
 
     flex-direction:column;
 
+    transition:
+
+    transform .35s ease,
+
+    box-shadow .35s ease;
+
+    border-top:
+
+    4px solid transparent;
+
 }
-
-
 
 
 
 .resource-card:hover {
 
-    transform:translateY(-8px);
+    transform:
+
+    translateY(-8px);
+
+    border-top:
+
+    4px solid var(--gold);
+
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,.18);
 
 }
 
@@ -435,7 +585,9 @@ RESOURCE DIRECTORY
 
     font-size:2rem;
 
-    margin-bottom:.5rem;
+    line-height:1.2;
+
+    margin-bottom:.75rem;
 
 }
 
@@ -449,7 +601,11 @@ RESOURCE DIRECTORY
 
     font-weight:600;
 
+    letter-spacing:.5px;
+
     margin-bottom:1rem;
+
+    display:block;
 
 }
 
@@ -459,6 +615,8 @@ RESOURCE DIRECTORY
 
 .resource-card p {
 
+    color:var(--charcoal);
+
     flex-grow:1;
 
 }
@@ -467,7 +625,41 @@ RESOURCE DIRECTORY
 
 
 
+/*========================================================
+SERIES LISTS
+========================================================*/
+
+
+.resource-card ul {
+
+    margin:
+
+    1rem 0;
+
+    padding-left:1.5rem;
+
+}
+
+
+
+.resource-card li {
+
+    margin-bottom:.4rem;
+
+}
+
+
+
+
+
+/*========================================================
+RESOURCE BUTTON LINKS
+========================================================*/
+
+
 .resource-card a {
+
+    display:inline-block;
 
     margin-top:1.5rem;
 
@@ -475,15 +667,105 @@ RESOURCE DIRECTORY
 
     font-weight:700;
 
-    border-bottom:2px solid var(--gold);
-
     width:max-content;
+
+    border-bottom:
+
+    2px solid var(--gold);
+
+    transition:.3s;
+
+}
+
+
+
+.resource-card a:hover {
+
+    color:var(--gold);
 
 }
 
 
 
 
+
+/*========================================================
+CATEGORY DIFFERENTIATION
+========================================================*/
+
+
+#education .resource-card {
+
+    border-top-color:
+
+    rgba(200,164,93,.4);
+
+}
+
+
+
+#faith .resource-card {
+
+    border-top-color:
+
+    rgba(200,164,93,.4);
+
+}
+
+
+
+#creative .resource-card {
+
+    border-top-color:
+
+    rgba(200,164,93,.4);
+
+}
+
+
+
+#clients .resource-card {
+
+    border-top-color:
+
+    rgba(200,164,93,.4);
+
+}
+
+
+
+
+
+/*========================================================
+SCROLL ANIMATION
+========================================================*/
+
+
+.resource-card.hidden {
+
+    opacity:0;
+
+    transform:
+
+    translateY(35px);
+
+}
+
+
+
+.resource-card.visible {
+
+    opacity:1;
+
+    transform:
+
+    translateY(0);
+
+    transition:
+
+    all .7s ease;
+
+}
 
 /*========================================================
 FOOTER
@@ -494,11 +776,19 @@ FOOTER
 
     background:var(--navy);
 
-    color:white;
+    color:var(--white);
 
     text-align:center;
 
     padding:3rem 2rem;
+
+}
+
+
+
+.footer p {
+
+    margin:.5rem 0;
 
 }
 
@@ -510,6 +800,8 @@ FOOTER
 
     font-size:1.2rem;
 
+    font-weight:600;
+
 }
 
 
@@ -517,7 +809,7 @@ FOOTER
 
 
 /*========================================================
-404 SUPPORT
+404 PAGE SUPPORT
 ========================================================*/
 
 
@@ -533,6 +825,76 @@ FOOTER
 
     text-align:center;
 
+    background:var(--navy);
+
+    color:white;
+
+    padding:2rem;
+
+}
+
+
+
+.error-container {
+
+    max-width:700px;
+
+}
+
+
+
+.error-number {
+
+    font-family:
+    "Cormorant Garamond",
+    serif;
+
+    font-size:8rem;
+
+    color:var(--gold);
+
+    line-height:1;
+
+}
+
+
+
+.error-container h1 {
+
+    color:white;
+
+    font-size:3rem;
+
+    margin-bottom:1rem;
+
+}
+
+
+
+.error-container p {
+
+    font-size:1.1rem;
+
+    margin-bottom:2rem;
+
+}
+
+
+
+.error-button {
+
+    display:inline-block;
+
+    padding:1rem 2.5rem;
+
+    background:var(--gold);
+
+    color:var(--navy);
+
+    border-radius:50px;
+
+    font-weight:700;
+
 }
 
 
@@ -540,11 +902,12 @@ FOOTER
 
 
 /*========================================================
-MOBILE
+MOBILE NAVIGATION
 ========================================================*/
 
 
 @media(max-width:850px){
+
 
 
 .nav-links {
@@ -559,13 +922,17 @@ MOBILE
 
     width:100%;
 
-    background:var(--navy);
+    background:
+
+    var(--navy);
 
     flex-direction:column;
 
     text-align:center;
 
     padding:2rem;
+
+    gap:1.5rem;
 
 }
 
@@ -587,9 +954,26 @@ MOBILE
 
 
 
+}
+
+
+
+
+
+/*========================================================
+TABLET & MOBILE LAYOUT
+========================================================*/
+
+
+@media(max-width:700px){
+
+
+
 section {
 
-    padding:3rem 1.5rem;
+    padding:
+
+    3rem 1.25rem;
 
 }
 
@@ -603,9 +987,55 @@ section h2 {
 
 
 
+.hero {
+
+    min-height:65vh;
+
+    padding:
+
+    4rem 1.5rem;
+
+}
+
+
+
+.hero h1 {
+
+    font-size:3rem;
+
+}
+
+
+
+.hero p {
+
+    font-size:1rem;
+
+}
+
+
+
 .resource-category h3 {
 
-    font-size:2rem;
+    font-size:2.2rem;
+
+}
+
+
+
+.collection-title {
+
+    font-size:1.8rem;
+
+}
+
+
+
+.resource-grid {
+
+    grid-template-columns:
+
+    1fr;
 
 }
 
@@ -613,7 +1043,61 @@ section h2 {
 
 .resource-card {
 
-    padding:1.5rem;
+    padding:1.7rem;
+
+}
+
+
+
+.resource-card h4 {
+
+    font-size:1.8rem;
+
+}
+
+
+
+}
+
+
+
+
+/*========================================================
+SMALL MOBILE DEVICES
+========================================================*/
+
+
+@media(max-width:420px){
+
+
+
+.logo {
+
+    font-size:1.6rem;
+
+}
+
+
+
+.hero h1 {
+
+    font-size:2.5rem;
+
+}
+
+
+
+.button {
+
+    width:100%;
+
+}
+
+
+
+.resource-card {
+
+    border-radius:15px;
 
 }
 
