@@ -1,10 +1,19 @@
+/*========================================================
+
+RESOURCE LIBRARY JAVASCRIPT
+
+Author: Bradley Hobbs
+
+========================================================*/
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
 
+
+
 /*========================================================
-
 MOBILE MENU
-
 ========================================================*/
 
 
@@ -22,7 +31,9 @@ if(menuButton && navLinks){
 
     menuButton.addEventListener("click", () => {
 
+
         navLinks.classList.toggle("active");
+
 
     });
 
@@ -35,7 +46,9 @@ if(menuButton && navLinks){
 
         link.addEventListener("click", () => {
 
+
             navLinks.classList.remove("active");
+
 
         });
 
@@ -50,62 +63,10 @@ if(menuButton && navLinks){
 
 
 
-/*========================================================
-
-RESOURCE CARD ANIMATION
-
-========================================================*/
-
-
-const cards =
-document.querySelectorAll(".resource-card");
-
-
-
-const observer =
-new IntersectionObserver(
-(entries) => {
-
-
-entries.forEach(entry => {
-
-
-    if(entry.isIntersecting){
-
-        entry.target.classList.add("visible");
-
-    }
-
-
-});
-
-
-},
-{
-    threshold:.15
-}
-
-);
-
-
-
-cards.forEach(card => {
-
-    card.classList.add("hidden");
-
-    observer.observe(card);
-
-});
-
-
-
-
 
 
 /*========================================================
-
-SMOOTH SCROLL
-
+SMOOTH SCROLLING
 ========================================================*/
 
 
@@ -114,7 +75,7 @@ document
 .forEach(anchor => {
 
 
-anchor.addEventListener("click", function(e){
+anchor.addEventListener("click", function(event){
 
 
 const target =
@@ -126,21 +87,31 @@ this.getAttribute("href")
 
 if(target){
 
-    e.preventDefault();
 
-    target.scrollIntoView({
+event.preventDefault();
 
-        behavior:"smooth"
 
-    });
+
+target.scrollIntoView({
+
+    behavior:"smooth",
+
+    block:"start"
+
+});
+
 
 }
 
 
+
 });
 
 
 });
+
+
+
 
 
 
@@ -148,9 +119,81 @@ if(target){
 
 
 /*========================================================
+RESOURCE CARD ANIMATION
+========================================================*/
 
+
+const cards =
+document.querySelectorAll(
+".resource-card"
+);
+
+
+
+if(cards.length){
+
+
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+
+
+entries.forEach(entry=>{
+
+
+if(entry.isIntersecting){
+
+
+entry.target.classList.add("visible");
+
+
+observer.unobserve(entry.target);
+
+
+}
+
+
+});
+
+
+},
+{
+
+threshold:.15
+
+}
+
+);
+
+
+
+
+
+cards.forEach(card=>{
+
+
+card.classList.add("hidden");
+
+
+observer.observe(card);
+
+
+});
+
+
+}
+
+
+
+
+
+
+
+
+
+/*========================================================
 ACTIVE NAVIGATION
-
 ========================================================*/
 
 
@@ -161,14 +204,19 @@ document.querySelectorAll(
 
 
 
-const links =
+const navigationLinks =
 document.querySelectorAll(
 ".nav-links a"
 );
 
 
 
+if(sections.length){
+
+
+
 window.addEventListener("scroll", () => {
+
 
 
 let current = "";
@@ -178,24 +226,32 @@ let current = "";
 sections.forEach(section => {
 
 
+
 const sectionTop =
 section.offsetTop - 150;
 
 
 
-if(window.scrollY >= sectionTop){
+if(
+window.scrollY >= sectionTop
+){
 
-    current =
-    section.getAttribute("id");
+
+current =
+section.getAttribute("id");
+
 
 }
+
 
 
 });
 
 
 
-links.forEach(link => {
+
+
+navigationLinks.forEach(link=>{
 
 
 link.classList.remove("active");
@@ -203,18 +259,29 @@ link.classList.remove("active");
 
 
 if(
-link.getAttribute("href") === "#" + current
+link.getAttribute("href")
+=== "#" + current
 ){
 
-    link.classList.add("active");
+
+link.classList.add("active");
+
 
 }
 
 
+
 });
 
 
+
 });
+
+
+
+}
+
+
 
 
 
@@ -223,9 +290,7 @@ link.getAttribute("href") === "#" + current
 
 
 /*========================================================
-
-UPDATE COPYRIGHT YEAR
-
+FOOTER YEAR
 ========================================================*/
 
 
@@ -236,10 +301,40 @@ document.querySelector(".footer-year");
 
 if(year){
 
+
 year.textContent =
 new Date().getFullYear();
 
+
 }
+
+
+
+
+
+
+/*========================================================
+EXTERNAL LINKS
+========================================================*/
+
+
+document
+.querySelectorAll(
+'.resource-card a[target="_blank"]'
+)
+.forEach(link=>{
+
+
+link.setAttribute(
+"rel",
+"noopener noreferrer"
+);
+
+
+});
+
+
+
 
 
 
