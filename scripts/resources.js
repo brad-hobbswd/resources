@@ -1,24 +1,19 @@
-/*========================================================
-
-RESOURCE LIBRARY JAVASCRIPT
-
-Author: Bradley Hobbs
-
-========================================================*/
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
 
-
 /*========================================================
+
 MOBILE MENU
+
 ========================================================*/
 
 
-const menuButton = document.querySelector(".menu-toggle");
+const menuButton =
+document.querySelector(".menu-toggle");
 
-const navLinks = document.querySelector(".nav-links");
+
+const navLinks =
+document.querySelector(".nav-links");
 
 
 
@@ -27,23 +22,20 @@ if(menuButton && navLinks){
 
     menuButton.addEventListener("click", () => {
 
-
         navLinks.classList.toggle("active");
-
 
     });
 
 
 
-    document.querySelectorAll(".nav-links a")
+    document
+    .querySelectorAll(".nav-links a")
     .forEach(link => {
 
 
         link.addEventListener("click", () => {
 
-
             navLinks.classList.remove("active");
-
 
         });
 
@@ -58,32 +50,31 @@ if(menuButton && navLinks){
 
 
 
-
 /*========================================================
-SCROLL REVEAL ANIMATION
+
+RESOURCE CARD ANIMATION
+
 ========================================================*/
 
 
-const cards = document.querySelectorAll(
-".collection-card, .featured-box"
-);
+const cards =
+document.querySelectorAll(".resource-card");
 
 
 
-const observer = new IntersectionObserver(
-(entries)=>{
+const observer =
+new IntersectionObserver(
+(entries) => {
 
 
-entries.forEach(entry=>{
+entries.forEach(entry => {
 
 
-if(entry.isIntersecting){
+    if(entry.isIntersecting){
 
+        entry.target.classList.add("visible");
 
-    entry.target.classList.add("show");
-
-
-}
+    }
 
 
 });
@@ -94,18 +85,59 @@ if(entry.isIntersecting){
     threshold:.15
 }
 
-
-
 );
 
 
 
-cards.forEach(card=>{
-
+cards.forEach(card => {
 
     card.classList.add("hidden");
 
     observer.observe(card);
+
+});
+
+
+
+
+
+
+/*========================================================
+
+SMOOTH SCROLL
+
+========================================================*/
+
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(anchor => {
+
+
+anchor.addEventListener("click", function(e){
+
+
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
+
+
+
+if(target){
+
+    e.preventDefault();
+
+    target.scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+});
 
 
 });
@@ -115,45 +147,46 @@ cards.forEach(card=>{
 
 
 
-
-
 /*========================================================
-ACTIVE NAVIGATION HIGHLIGHT
+
+ACTIVE NAVIGATION
+
 ========================================================*/
 
 
-const sections = document.querySelectorAll(
-"section[id]"
+const sections =
+document.querySelectorAll(
+".resource-category"
 );
 
 
-const navigationLinks =
+
+const links =
 document.querySelectorAll(
 ".nav-links a"
 );
 
 
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
 
 let current = "";
 
 
 
-sections.forEach(section=>{
+sections.forEach(section => {
 
 
 const sectionTop =
-section.offsetTop - 120;
+section.offsetTop - 150;
 
 
 
-if(
-window.scrollY >= sectionTop
-){
+if(window.scrollY >= sectionTop){
 
-current = section.getAttribute("id");
+    current =
+    section.getAttribute("id");
 
 }
 
@@ -162,17 +195,18 @@ current = section.getAttribute("id");
 
 
 
-navigationLinks.forEach(link=>{
+links.forEach(link => {
 
 
 link.classList.remove("active");
+
 
 
 if(
 link.getAttribute("href") === "#" + current
 ){
 
-link.classList.add("active");
+    link.classList.add("active");
 
 }
 
@@ -181,7 +215,6 @@ link.classList.add("active");
 
 
 });
-
 
 
 
@@ -190,12 +223,15 @@ link.classList.add("active");
 
 
 /*========================================================
-YEAR UPDATE
+
+UPDATE COPYRIGHT YEAR
+
 ========================================================*/
 
 
 const year =
 document.querySelector(".footer-year");
+
 
 
 if(year){
