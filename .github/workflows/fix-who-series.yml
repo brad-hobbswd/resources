@@ -1,0 +1,33 @@
+name: Fix Who Series Layout
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Move third Who Series card into grid
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          pattern = re.compile(r'(<h4 class="collection-title">❓ The Who Series</h4>.*?<div class="resource-grid">)(.*?)(</div>\s*)(<article class="resource-card"><h4>Who Do You Call Savior\?</h4>.*?</article>)', re.S)
+          m = pattern.search(s)
+          if not m:
+              raise SystemExit('Who Series block not found')
+          s = s[:m.start()] + m.group(1) + m.group(2) + m.group(4) + '\n</div>' + s[m.end():]
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit and remove temporary workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git rm .github/workflows/fix-who-series.yml
+          git commit -m "Fix The Who Series three-book grid"
+          git push
